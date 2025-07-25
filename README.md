@@ -1,72 +1,146 @@
-# go-datastructures
+# Go Data Structures
 
-## Introdução
+A comprehensive collection of data structures and algorithms implemented in Go, including classic implementations and fundamental computer science algorithms.
+
+## 📦 Project Structure
 
 ```bash
-pkg/
-└── graph/
-├── graph.go (Estrutura básica do grafo)
-├── adjacency_list.go (Representação com Lista de Adjacência)
-├── adjacency_matrix.go (Representação com Matriz de Adjacência)
-├── edge_list.go (Representação com Lista de Arestas)
-├── algorithms/
-│ ├── bfs.go (Busca em Largura - BFS)
-│ ├── dfs.go (Busca em Profundidade - DFS)
-│ ├── dijkstra.go (Caminho mínimo - Dijkstra)
-│ ├── bellman_ford.go (Caminho mínimo - Bellman-Ford)
-│ ├── floyd_warshall.go (Caminho mínimo para todos os pares)
-│ ├── prim.go (Árvore Geradora Mínima - Prim)
-│ ├── kruskal.go (Árvore Geradora Mínima - Kruskal)
-│ ├── topological.go (Ordenação Topológica)
-│ ├── strongly_connected.go (Componentes Fortemente Conectados)
-│ ├── bridges.go (Detecção de Pontes)
-│ ├── articulation_points.go (Pontos de Articulação)
-│ ├── shortest_path.go (Caminho Mínimo)
-│ ├── max_flow.go (Fluxo Máximo)
-│ ├── min_cut.go (Corte Mínimo)
-│ ├── traveling_salesman.go (Caixeiro Viajante)
-│ ├── hamiltonian_cycle.go (Ciclo Hamiltoniano)
-│ ├── eulerian_cycle.go (Ciclo Euleriano)
-│ ├── is_bipartite.go (Bipartição)
-│ ├── is_connected.go (Conectividade)
-│ ├── is_cyclic.go (Ciclicidade)
-│ ├── is_tree.go (Árvore)
-│ ├── is_forest.go (Floresta)
-│ ├── is_biconnected.go (Biconexidade)
-│ ├── is_planar.go (Planaridade)
-│ ├── is_eulerian.go (Eulerianidade)
-│ ├── is_semi_eulerian.go (Semi-Eulerianidade)
-│ ├── a-star.go (A*)
-│ ├── ida_star.go (IDA*)
+go-datastructures/
+├── cmd/
+│   └── main.go                    # Main demo of packages
+├── examples/
+│   └── farm_problem/
+│       └── main.go                # Farm problem example (Euclidean)
+├── pkg/
+│   ├── binaryTree/
+│   │   └── binaryTree.go          # Basic binary tree structure
+│   ├── euclidean/                 # → Euclidean Algorithm (GCD/LCM)
+│   ├── fatorial/                  # → Factorial calculation with big.Int
+│   ├── graph/                     # → Basic graph structure
+│   ├── sort/                      # → Sorting algorithms
+│   └── stack/                     # → Stack (LIFO)
+├── go.mod                         # Go module
+└── README.md                      # This file
 ```
 
-## Estrutura de Dados
+## 🚀 Implemented Algorithms and Data Structures
 
-### Grafo
+| Package | Description | Status | Documentation |
+|---------|-------------|--------|---------------|
+| **[euclidean](pkg/euclidean/)** | Euclidean Algorithm - GCD, LCM, farm problem | ✅ Complete | [📖 README](pkg/euclidean/README.md) |
+| **[fatorial](pkg/fatorial/)** | Factorial calculation with big.Int for large numbers | ✅ Complete | [📖 README](pkg/fatorial/README.md) |
+| **[stack](pkg/stack/)** | Stack implementation (LIFO) with linked list | ✅ Complete | [📖 README](pkg/stack/README.md) |
+| **[sort](pkg/sort/)** | Sorting algorithms (QuickSort, MergeSort, etc.) | ✅ Complete | [📖 README](pkg/sort/README.md) |
+| **[binaryTree](pkg/binaryTree/)** | Basic binary tree structure | 🚧 In development | - |
+| **[graph](pkg/graph/)** | Graph structures and algorithms | 🚧 Planned | - |
 
-Um grafo é uma estrutura de dados que consiste em um conjunto de vértices (ou nós) e um conjunto de arestas (ou arcos) que conectam pares de vértices.
+## 🎯 Quick Start
 
-Algoritmo A\* é um algoritmo de busca informada que utiliza uma heurística para encontrar o caminho mais curto entre dois vértices em um grafo.
+### Run Main Demo
 
-```plaintext
-ALGORITMO BuscaA*
-INÍCIO
-    Criar uma fila de prioridade aberta
-    Adicionar o nó inicial à fila com custo 0
-
-    ENQUANTO a fila não estiver vazia FAÇA
-        Remover o nó com menor f(n) da fila
-        SE nó for o objetivo ENTÃO
-            Retornar o caminho encontrado
-        FIM SE
-
-        PARA cada vizinho do nó ATUAL FAÇA
-            Calcular custo g(n) + h(n)
-            SE vizinho ainda não foi visitado OU novo custo for menor ENTÃO
-                Atualizar custo e adicionar à fila
-            FIM SE
-        FIM PARA
-    FIM ENQUANTO
-FIM
-
+```bash
+go run ./cmd/main.go
 ```
+
+### Practical Example - Farm Problem
+
+```bash
+go run ./examples/farm_problem/main.go
+```
+
+### Run Tests
+
+```bash
+go test ./pkg/...
+```
+
+## 📚 Test Coverage
+
+| Package | Coverage | Status |
+|---------|----------|--------|
+| euclidean | 93.5% | ✅ |
+| fatorial | 100% | ✅ |
+| stack | 100% | ✅ |
+| sort | 96.3% | ✅ |
+
+## 🛠️ Quick Usage
+
+### Euclidean Algorithm
+
+```go
+import "github.com/JeanGrijp/go-datastructures/pkg/euclidean"
+
+// Farm problem: largest square that divides 1680x1050
+squareSize := euclidean.LargestSquareSize(1680, 1050) // 210
+```
+
+### Large Number Factorial
+
+```go
+import "github.com/JeanGrijp/go-datastructures/pkg/fatorial"
+
+// Calculate 3000! (9131 digits)
+result := fatorial.Factorial(3000)
+```
+
+### LIFO Stack
+
+```go
+import "github.com/JeanGrijp/go-datastructures/pkg/stack"
+
+stack := stack.NewStack()
+stack.Push(42)
+value, _ := stack.Pop() // 42
+```
+
+## 📖 Documentation
+
+For detailed information about each algorithm, consult the specific documentation:
+
+- **[Euclidean Algorithm](pkg/euclidean/README.md)** - GCD, LCM, farm problem
+- **[Factorial](pkg/fatorial/README.md)** - Calculations with big.Int
+- **[Stack](pkg/stack/README.md)** - LIFO implementation
+- **[Sorting Algorithms](pkg/sort/README.md)** - QuickSort, MergeSort, etc.
+
+### go doc Commands
+
+```bash
+go doc ./pkg/euclidean
+go doc ./pkg/fatorial
+go doc ./pkg/stack
+go doc ./pkg/sort
+```
+
+## 🛠️ Installation
+
+### Prerequisites
+
+- Go 1.19 or higher
+
+### Clone Repository
+
+```bash
+git clone https://github.com/JeanGrijp/go-datastructures.git
+cd go-datastructures
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! For each new algorithm or data structure:
+
+1. Create the package in `pkg/algorithm_name/`
+2. Implement with complete tests
+3. Add detailed documentation in the package's README.md
+4. Update the table in this main README
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🔗 References
+
+- [Understanding Algorithms](https://www.manning.com/books/grokking-algorithms) - Source of the farm problem
+- [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/books/introduction-algorithms-third-edition)
+- [The Art of Computer Programming (Knuth)](https://www-cs-faculty.stanford.edu/~knuth/taocp.html)
+- [Official Go Documentation](https://golang.org/doc/)
+
