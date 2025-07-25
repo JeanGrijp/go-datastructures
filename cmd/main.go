@@ -5,6 +5,7 @@ import (
 
 	"github.com/JeanGrijp/go-datastructures/pkg/euclidean"
 	"github.com/JeanGrijp/go-datastructures/pkg/fatorial"
+	"github.com/JeanGrijp/go-datastructures/pkg/fibonacci"
 )
 
 func main() {
@@ -61,4 +62,38 @@ func main() {
 	// GCD de múltiplos números
 	numbers := []int{48, 18, 24, 30}
 	fmt.Printf("   GCD de %v = %d\n", numbers, euclidean.GCDMultiple(numbers))
+	fmt.Println()
+
+	// Demo do pacote fibonacci
+	fmt.Println("3. Fibonacci Sequence Package Demo:")
+
+	// Comparação de diferentes implementações
+	fmt.Println("   🚀 Diferentes implementações do Fibonacci:")
+	n := 10
+	fmt.Printf("   F(%d) Iterativo: %d\n", n, fibonacci.Fibonacci(n))
+	fmt.Printf("   F(%d) Recursivo: %d\n", n, fibonacci.FibonacciRecursive(n))
+	fmt.Printf("   F(%d) Memoizado: %d\n", n, fibonacci.FibonacciMemoized(n))
+	fmt.Printf("   F(%d) Matriz:    %d\n", n, fibonacci.FibonacciMatrix(n))
+	fmt.Println()
+
+	// Sequência de Fibonacci
+	fmt.Println("   📊 Sequência de Fibonacci:")
+	sequence := fibonacci.FibonacciSequence(10)
+	fmt.Printf("   Primeiros 10: %v\n", sequence)
+	fmt.Println()
+
+	// Números grandes com big.Int
+	fmt.Println("   🔢 Números grandes:")
+	bigFib := fibonacci.FibonacciBig(100)
+	fmt.Printf("   F(100) = %s\n", bigFib.String())
+	fmt.Printf("   F(100) tem %d dígitos\n", len(bigFib.String()))
+	fmt.Println()
+
+	// Ferramentas educacionais
+	fmt.Println("   🧮 Ferramentas educacionais:")
+	fmt.Printf("   21 é um número de Fibonacci? %t\n", fibonacci.IsValidFibonacci(21))
+	fmt.Printf("   22 é um número de Fibonacci? %t\n", fibonacci.IsValidFibonacci(22))
+	fmt.Printf("   Índice do número 55: %d\n", fibonacci.FibonacciIndex(55))
+	fmt.Printf("   Soma dos primeiros 10: %d\n", fibonacci.FibonacciSum(10))
+	fmt.Printf("   Razão áurea (aprox): %.6f\n", fibonacci.GoldenRatio(20))
 }

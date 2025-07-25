@@ -16,6 +16,7 @@ go-datastructures/
 │   │   └── binaryTree.go          # Basic binary tree structure
 │   ├── euclidean/                 # → Euclidean Algorithm (GCD/LCM)
 │   ├── fatorial/                  # → Factorial calculation with big.Int
+│   ├── fibonacci/                 # → Fibonacci algorithms (multiple implementations)
 │   ├── graph/                     # → Basic graph structure
 │   ├── sort/                      # → Sorting algorithms
 │   └── stack/                     # → Stack (LIFO)
@@ -29,6 +30,7 @@ go-datastructures/
 |---------|-------------|--------|---------------|
 | **[euclidean](pkg/euclidean/)** | Euclidean Algorithm - GCD, LCM, farm problem | ✅ Complete | [📖 README](pkg/euclidean/README.md) |
 | **[fatorial](pkg/fatorial/)** | Factorial calculation with big.Int for large numbers | ✅ Complete | [📖 README](pkg/fatorial/README.md) |
+| **[fibonacci](pkg/fibonacci/)** | Fibonacci sequence - Multiple algorithm implementations | ✅ Complete | [📖 README](pkg/fibonacci/README.md) |
 | **[stack](pkg/stack/)** | Stack implementation (LIFO) with linked list | ✅ Complete | [📖 README](pkg/stack/README.md) |
 | **[sort](pkg/sort/)** | Sorting algorithms (QuickSort, MergeSort, etc.) | ✅ Complete | [📖 README](pkg/sort/README.md) |
 | **[binaryTree](pkg/binaryTree/)** | Basic binary tree structure | 🚧 In development | - |
@@ -60,6 +62,7 @@ go test ./pkg/...
 |---------|----------|--------|
 | euclidean | 93.5% | ✅ |
 | fatorial | 100% | ✅ |
+| fibonacci | 52.7% | ✅ |
 | stack | 100% | ✅ |
 | sort | 96.3% | ✅ |
 
@@ -83,6 +86,18 @@ import "github.com/JeanGrijp/go-datastructures/pkg/fatorial"
 result := fatorial.Factorial(3000)
 ```
 
+### Fibonacci Sequence
+
+```go
+import "github.com/JeanGrijp/go-datastructures/pkg/fibonacci"
+
+// Multiple algorithm implementations
+fib := fibonacci.Fibonacci(50)                    // Iterative O(n)
+fibBig := fibonacci.FibonacciBig(1000)           // Big numbers
+fibMatrix := fibonacci.FibonacciMatrix(100)      // Matrix O(log n)
+sequence := fibonacci.FibonacciSequence(10)      // [0 1 1 2 3 5 8 13 21 34]
+```
+
 ### LIFO Stack
 
 ```go
@@ -99,6 +114,7 @@ For detailed information about each algorithm, consult the specific documentatio
 
 - **[Euclidean Algorithm](pkg/euclidean/README.md)** - GCD, LCM, farm problem
 - **[Factorial](pkg/fatorial/README.md)** - Calculations with big.Int
+- **[Fibonacci Sequence](pkg/fibonacci/README.md)** - Multiple algorithm implementations
 - **[Stack](pkg/stack/README.md)** - LIFO implementation
 - **[Sorting Algorithms](pkg/sort/README.md)** - QuickSort, MergeSort, etc.
 
@@ -107,6 +123,7 @@ For detailed information about each algorithm, consult the specific documentatio
 ```bash
 go doc ./pkg/euclidean
 go doc ./pkg/fatorial
+go doc ./pkg/fibonacci
 go doc ./pkg/stack
 go doc ./pkg/sort
 ```
