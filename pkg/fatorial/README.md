@@ -66,12 +66,15 @@ if result.IsInt64() {
 Calculates the factorial of n (n!) using arbitrary precision arithmetic.
 
 **Parameters:**
+
 - `n` (int): A non-negative integer
 
 **Returns:**
+
 - `*big.Int`: The factorial of n
 
 **Example:**
+
 ```go
 result := fatorial.Factorial(10)  // Returns 3628800
 ```
@@ -81,9 +84,11 @@ result := fatorial.Factorial(10)  // Returns 3628800
 Portuguese version of the Factorial function. Provides the same functionality with Portuguese naming for compatibility.
 
 **Parameters:**
+
 - `n` (int): A non-negative integer
 
 **Returns:**
+
 - `*big.Int`: The factorial of n
 
 ## Performance Characteristics
@@ -95,12 +100,14 @@ Portuguese version of the Factorial function. Provides the same functionality wi
 ## Examples
 
 ### Small Numbers
+
 ```go
 fmt.Println("5! =", fatorial.Factorial(5))    // Output: 5! = 120
 fmt.Println("10! =", fatorial.Factorial(10))  // Output: 10! = 3628800
 ```
 
 ### Large Numbers
+
 ```go
 // This would overflow with standard int types
 result := fatorial.Factorial(100)
@@ -114,6 +121,7 @@ fmt.Printf("1000! has %d digits\n", len(huge.String()))
 ```
 
 ### Comparison with Standard Types
+
 ```go
 // This will overflow and give incorrect results
 func standardFactorial(n int) int {
@@ -132,11 +140,14 @@ fmt.Println("Big.Int 30!:", fatorial.Factorial(30))     // Correct result
 ## Mathematical Background
 
 The factorial function is defined as:
+
 - n! = n × (n-1) × (n-2) × ... × 2 × 1
 - 0! = 1 (by convention)
 
 ### Growth Rate
+
 Factorials grow extremely rapidly:
+
 - 10! = 3,628,800
 - 20! = 2,432,902,008,176,640,000
 - 30! = 265,252,859,812,191,058,636,308,480,000,000
@@ -144,11 +155,14 @@ Factorials grow extremely rapidly:
 ## Why Use This Package?
 
 ### Integer Overflow Problem
+
 Standard integer types in Go have limits:
+
 - `int32`: max value ≈ 2.1 × 10^9 (13! already overflows)
 - `int64`: max value ≈ 9.2 × 10^18 (21! already overflows)
 
 ### Solution Benefits
+
 - ✅ No overflow - can calculate factorial of any reasonable size
 - ✅ Exact precision - no floating-point approximation errors
 - ✅ Easy to use - same interface as standard arithmetic
