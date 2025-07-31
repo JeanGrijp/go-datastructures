@@ -78,8 +78,8 @@ func main() {
 
 	// Sequência de Fibonacci
 	fmt.Println("   📊 Sequência de Fibonacci:")
-	sequence := fibonacci.FibonacciSequence(10)
-	fmt.Printf("   Primeiros 10: %v\n", sequence)
+	sequence := fibonacci.FibonacciSequence(100)
+	fmt.Printf("   Primeiros 100: %v\n", sequence)
 	fmt.Println()
 
 	// Números grandes com big.Int
@@ -96,4 +96,11 @@ func main() {
 	fmt.Printf("   Índice do número 55: %d\n", fibonacci.FibonacciIndex(55))
 	fmt.Printf("   Soma dos primeiros 10: %d\n", fibonacci.FibonacciSum(10))
 	fmt.Printf("   Razão áurea (aprox): %.6f\n", fibonacci.GoldenRatio(20))
+
+	// Teste de Fibonacci Matriz
+	fmt.Println()
+	fmt.Println("   📊 Teste de Fibonacci Matriz:")
+	n = 50
+	fmt.Printf("   F(%d) Matriz: %d\n", n, fibonacci.FibonacciMatrix(n))
+
 }

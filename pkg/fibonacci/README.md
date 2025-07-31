@@ -1,84 +1,84 @@
 # Fibonacci Package
 
-Esta implementação fornece várias abordagens para calcular números de Fibonacci, cada uma com suas próprias características de performance e casos de uso.
+This implementation provides various approaches for calculating Fibonacci numbers, each with its own performance characteristics and use cases.
 
-## Índice
+## Table of Contents
 
-- [Sobre a Sequência de Fibonacci](#sobre-a-sequência-de-fibonacci)
-- [Implementações Disponíveis](#implementações-disponíveis)
-- [Exemplos de Uso](#exemplos-de-uso)
-- [Ferramentas Educacionais](#ferramentas-educacionais)
+- [About the Fibonacci Sequence](#about-the-fibonacci-sequence)
+- [Available Implementations](#available-implementations)
+- [Usage Examples](#usage-examples)
+- [Educational Tools](#educational-tools)
 - [Performance](#performance)
-- [Casos de Uso](#casos-de-uso)
+- [Use Cases](#use-cases)
 
-## Sobre a Sequência de Fibonacci
+## About the Fibonacci Sequence
 
-A sequência de Fibonacci é uma série de números onde cada número é a soma dos dois números anteriores. A sequência tradicionalmente começa com 0 e 1:
+The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding numbers. The sequence traditionally starts with 0 and 1:
 
 ```
 F(0) = 0
 F(1) = 1
-F(n) = F(n-1) + F(n-2) para n > 1
+F(n) = F(n-1) + F(n-2) for n > 1
 ```
 
-**Sequência:** 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...
+**Sequence:** 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...
 
-### Propriedades Matemáticas
+### Mathematical Properties
 
-- **Razão Áurea**: À medida que n aumenta, F(n+1)/F(n) aproxima-se da razão áurea φ ≈ 1.618033988749
-- **Fórmula de Binet**: F(n) = (φⁿ - ψⁿ)/√5, onde ψ = (1-√5)/2
-- **Identidade de Cassini**: F(n-1)×F(n+1) - F(n)² = (-1)ⁿ
+- **Golden Ratio**: As n increases, F(n+1)/F(n) approaches the golden ratio φ ≈ 1.618033988749
+- **Binet's Formula**: F(n) = (φⁿ - ψⁿ)/√5, where ψ = (1-√5)/2
+- **Cassini's Identity**: F(n-1)×F(n+1) - F(n)² = (-1)ⁿ
 
-## Implementações Disponíveis
+## Available Implementations
 
-### 1. Implementação Iterativa - `Fibonacci(n int) int`
-- **Complexidade**: O(n) tempo, O(1) espaço
-- **Uso recomendado**: Valores pequenos a médios (n < 50)
-- **Características**: Mais eficiente para a maioria dos casos de uso
+### 1. Iterative Implementation - `Fibonacci(n int) int`
+- **Complexity**: O(n) time, O(1) space
+- **Recommended use**: Small to medium values (n < 50)
+- **Characteristics**: Most efficient for most use cases
 
 ```go
-result := fibonacci.Fibonacci(10) // Retorna 55
+result := fibonacci.Fibonacci(10) // Returns 55
 ```
 
-### 2. Implementação Recursiva - `FibonacciRecursive(n int) int`
-- **Complexidade**: O(2ⁿ) tempo, O(n) espaço
-- **Uso recomendado**: Apenas para demonstração educacional (n < 15)
-- **Características**: Implementação mais intuitiva, mas extremamente ineficiente
+### 2. Recursive Implementation - `FibonacciRecursive(n int) int`
+- **Complexity**: O(2ⁿ) time, O(n) space
+- **Recommended use**: Educational demonstration only (n < 15)
+- **Characteristics**: Most intuitive implementation, but extremely inefficient
 
 ```go
-result := fibonacci.FibonacciRecursive(8) // Retorna 21
+result := fibonacci.FibonacciRecursive(8) // Returns 21
 ```
 
-### 3. Implementação com Memoização - `FibonacciMemoized(n int) int`
-- **Complexidade**: O(n) tempo, O(n) espaço
-- **Uso recomendado**: Múltiplas chamadas para diferentes valores
-- **Características**: Combina clareza recursiva com eficiência
+### 3. Memoized Implementation - `FibonacciMemoized(n int) int`
+- **Complexity**: O(n) time, O(n) space
+- **Recommended use**: Multiple calls for different values
+- **Characteristics**: Combines recursive clarity with efficiency
 
 ```go
-result := fibonacci.FibonacciMemoized(30) // Retorna 832040
+result := fibonacci.FibonacciMemoized(30) // Returns 832040
 ```
 
-### 4. Implementação com Números Grandes - `FibonacciBig(n int) *big.Int`
-- **Complexidade**: O(n) tempo, O(1) espaço
-- **Uso recomendado**: Valores muito grandes (n > 50)
-- **Características**: Suporta números arbitrariamente grandes
+### 4. Big Numbers Implementation - `FibonacciBig(n int) *big.Int`
+- **Complexity**: O(n) time, O(1) space
+- **Recommended use**: Very large values (n > 50)
+- **Characteristics**: Supports arbitrarily large numbers
 
 ```go
-result := fibonacci.FibonacciBig(100) // Retorna 354224848179261915075
+result := fibonacci.FibonacciBig(100) // Returns 354224848179261915075
 ```
 
-### 5. Implementação com Matriz - `FibonacciMatrix(n int) int`
-- **Complexidade**: O(log n) tempo, O(1) espaço
-- **Uso recomendado**: Valores grandes quando precisão int é suficiente
-- **Características**: Algoritmo mais rápido para valores únicos grandes
+### 5. Matrix Implementation - `FibonacciMatrix(n int) int`
+- **Complexity**: O(log n) time, O(1) space
+- **Recommended use**: Large values when int precision is sufficient
+- **Characteristics**: Fastest algorithm for single large values
 
 ```go
-result := fibonacci.FibonacciMatrix(50) // Retorna 12586269025
+result := fibonacci.FibonacciMatrix(50) // Returns 12586269025
 ```
 
-## Exemplos de Uso
+## Usage Examples
 
-### Exemplo Básico
+### Basic Example
 ```go
 package main
 
@@ -88,23 +88,23 @@ import (
 )
 
 func main() {
-    // Calcular o 10º número de Fibonacci
+    // Calculate the 10th Fibonacci number
     fmt.Printf("F(10) = %d\n", fibonacci.Fibonacci(10))
     
-    // Gerar sequência dos primeiros 10 números
+    // Generate sequence of first 10 numbers
     sequence := fibonacci.FibonacciSequence(10)
-    fmt.Printf("Primeiros 10: %v\n", sequence)
+    fmt.Printf("First 10: %v\n", sequence)
     
-    // Verificar se um número é Fibonacci
-    fmt.Printf("8 é Fibonacci? %t\n", fibonacci.IsValidFibonacci(8))
+    // Check if a number is Fibonacci
+    fmt.Printf("Is 8 Fibonacci? %t\n", fibonacci.IsValidFibonacci(8))
     
-    // Calcular número muito grande
+    // Calculate very large number
     big := fibonacci.FibonacciBig(200)
     fmt.Printf("F(200) = %s\n", big.String())
 }
 ```
 
-### Exemplo de Performance
+### Performance Example
 ```go
 package main
 
@@ -117,82 +117,82 @@ import (
 func main() {
     n := 40
     
-    // Comparar diferentes implementações
+    // Compare different implementations
     start := time.Now()
     result1 := fibonacci.Fibonacci(n)
-    fmt.Printf("Iterativo: F(%d) = %d, Tempo: %v\n", 
+    fmt.Printf("Iterative: F(%d) = %d, Time: %v\n", 
         n, result1, time.Since(start))
     
     start = time.Now()
     result2 := fibonacci.FibonacciMatrix(n)
-    fmt.Printf("Matriz: F(%d) = %d, Tempo: %v\n", 
+    fmt.Printf("Matrix: F(%d) = %d, Time: %v\n", 
         n, result2, time.Since(start))
     
     start = time.Now()
     result3 := fibonacci.FibonacciMemoized(n)
-    fmt.Printf("Memoizado: F(%d) = %d, Tempo: %v\n", 
+    fmt.Printf("Memoized: F(%d) = %d, Time: %v\n", 
         n, result3, time.Since(start))
 }
 ```
 
-## Ferramentas Educacionais
+## Educational Tools
 
-### Geração de Sequência - `FibonacciSequence(n int) []int`
-Gera os primeiros n números da sequência de Fibonacci.
+### Sequence Generation - `FibonacciSequence(n int) []int`
+Generates the first n Fibonacci numbers.
 
 ```go
 sequence := fibonacci.FibonacciSequence(8)
-// Retorna: [0, 1, 1, 2, 3, 5, 8, 13]
+// Returns: [0, 1, 1, 2, 3, 5, 8, 13]
 ```
 
-### Validação - `IsValidFibonacci(num int) bool`
-Verifica se um número pertence à sequência de Fibonacci.
+### Validation - `IsValidFibonacci(num int) bool`
+Checks if a number belongs to the Fibonacci sequence.
 
 ```go
 fmt.Println(fibonacci.IsValidFibonacci(13)) // true
 fmt.Println(fibonacci.IsValidFibonacci(14)) // false
 ```
 
-### Busca de Índice - `FibonacciIndex(num int) int`
-Encontra o índice de um número de Fibonacci na sequência.
+### Index Search - `FibonacciIndex(num int) int`
+Finds the index of a Fibonacci number in the sequence.
 
 ```go
-index := fibonacci.FibonacciIndex(55) // Retorna 10
+index := fibonacci.FibonacciIndex(55) // Returns 10
 ```
 
-### Razão Áurea - `GoldenRatio(n int) float64`
-Calcula a aproximação da razão áurea usando F(n+1)/F(n).
+### Golden Ratio - `GoldenRatio(n int) float64`
+Calculates the golden ratio approximation using F(n+1)/F(n).
 
 ```go
-ratio := fibonacci.GoldenRatio(20) // Aproximadamente 1.618034
+ratio := fibonacci.GoldenRatio(20) // Approximately 1.618034
 ```
 
-### Soma da Sequência - `FibonacciSum(n int) int`
-Calcula a soma dos primeiros n números de Fibonacci.
+### Sequence Sum - `FibonacciSum(n int) int`
+Calculates the sum of the first n Fibonacci numbers.
 
 ```go
 sum := fibonacci.FibonacciSum(6) // 0+1+1+2+3+5 = 12
 ```
 
-### Visualização - `Visualize(n int) int`
-Calcula e exibe o processo de cálculo (útil para debugging e educação).
+### Visualization - `Visualize(n int) int`
+Calculates and displays the calculation process (useful for debugging and education).
 
 ```go
-result := fibonacci.Visualize(5) // Mostra o processo de cálculo
+result := fibonacci.Visualize(5) // Shows the calculation process
 ```
 
 ## Performance
 
-### Complexidade Temporal
-| Implementação | Complexidade | Melhor Para |
-|---------------|--------------|-------------|
-| Iterativa | O(n) | Uso geral (n < 50) |
-| Recursiva | O(2ⁿ) | Educação apenas (n < 15) |
-| Memoizada | O(n) | Múltiplas chamadas |
-| Matriz | O(log n) | Valores únicos grandes |
-| Big Int | O(n) | Números muito grandes |
+### Time Complexity
+| Implementation | Complexity | Best For |
+|---------------|------------|----------|
+| Iterative | O(n) | General use (n < 50) |
+| Recursive | O(2ⁿ) | Education only (n < 15) |
+| Memoized | O(n) | Multiple calls |
+| Matrix | O(log n) | Single large values |
+| Big Int | O(n) | Very large numbers |
 
-### Benchmarks (aproximados)
+### Benchmarks (approximate)
 ```
 BenchmarkFibonacci-8               30000000        50.0 ns/op
 BenchmarkFibonacciMemoized-8      10000000       150.0 ns/op  
@@ -201,52 +201,52 @@ BenchmarkFibonacciBig-8            1000000      1500.0 ns/op
 BenchmarkFibonacciRecursive-8           100  15000000.0 ns/op
 ```
 
-## Casos de Uso
+## Use Cases
 
-### 1. Educação e Demonstração
-- Use `FibonacciRecursive()` para mostrar o conceito básico
-- Use `Visualize()` para demonstrar o processo de cálculo
-- Use `FibonacciSequence()` para mostrar a progressão
+### 1. Education and Demonstration
+- Use `FibonacciRecursive()` to show the basic concept
+- Use `Visualize()` to demonstrate the calculation process
+- Use `FibonacciSequence()` to show the progression
 
-### 2. Aplicações de Performance
-- Use `Fibonacci()` para valores pequenos a médios
-- Use `FibonacciMatrix()` para cálculos únicos de valores grandes
-- Use `FibonacciMemoized()` quando calculando múltiplos valores
+### 2. Performance Applications
+- Use `Fibonacci()` for small to medium values
+- Use `FibonacciMatrix()` for single calculations of large values
+- Use `FibonacciMemoized()` when calculating multiple values
 
-### 3. Computação Científica
-- Use `FibonacciBig()` para pesquisa matemática com números grandes
-- Use `GoldenRatio()` para aproximações da razão áurea
-- Use `FibonacciSum()` para análises estatísticas
+### 3. Scientific Computing
+- Use `FibonacciBig()` for mathematical research with large numbers
+- Use `GoldenRatio()` for golden ratio approximations
+- Use `FibonacciSum()` for statistical analysis
 
-### 4. Validação e Análise
-- Use `IsValidFibonacci()` para verificar se dados seguem padrões Fibonacci
-- Use `FibonacciIndex()` para encontrar posições na sequência
+### 4. Validation and Analysis
+- Use `IsValidFibonacci()` to verify if data follows Fibonacci patterns
+- Use `FibonacciIndex()` to find positions in the sequence
 
-## Executando os Testes
+## Running Tests
 
 ```bash
-# Executar todos os testes
+# Run all tests
 go test ./pkg/fibonacci
 
-# Executar testes com verbose
+# Run tests with verbose output
 go test -v ./pkg/fibonacci
 
-# Executar benchmarks
+# Run benchmarks
 go test -bench=. ./pkg/fibonacci
 
-# Executar testes de coverage
+# Run coverage tests
 go test -cover ./pkg/fibonacci
 ```
 
-## Notas sobre Limitações
+## Limitations Notes
 
-1. **Overflow de Inteiros**: Implementações com `int` têm overflow após F(46) = 1836311903
-2. **Performance Recursiva**: A implementação recursiva é impraticável para n > 15
-3. **Memória**: A implementação memoizada usa O(n) memória adicional
-4. **Precisão**: Para números muito grandes, use sempre `FibonacciBig()`
+1. **Integer Overflow**: Implementations with `int` overflow after F(46) = 1836311903
+2. **Recursive Performance**: Recursive implementation is impractical for n > 15
+3. **Memory**: Memoized implementation uses O(n) additional memory
+4. **Precision**: For very large numbers, always use `FibonacciBig()`
 
-## Referências Matemáticas
+## Mathematical References
 
-- [Sequência de Fibonacci - Wikipedia](https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci)
+- [Fibonacci Sequence - Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_number)
 - [The Golden Ratio](https://en.wikipedia.org/wiki/Golden_ratio)
 - [Matrix Form of Fibonacci Sequence](https://www.mathsisfun.com/algebra/matrix-fibonacci.html)
