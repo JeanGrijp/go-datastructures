@@ -1,6 +1,16 @@
-# Go Data Structures
-
-A comprehensive collection of data structures and algorithms implemented in Go, including classic implementations and fundamental computer science algorithms.
+<!-- markdownlint-disable MD041 MD033 MD010 -->
+<div align="center">
+	<h1>Go Data Structures</h1>
+	<p>
+		A comprehensive collection of data structures and algorithms implemented in Go, including classic implementations and fundamental computer science algorithms.
+	</p>
+	<p>
+		<img alt="Go Version" src="https://img.shields.io/badge/Go-1.23.2-00ADD8?logo=go&logoColor=white" />
+		<img alt="Frameworks" src="https://img.shields.io/badge/Frameworks-Standard%20Library-blue" />
+		<img alt="License" src="https://img.shields.io/badge/License-MIT-green.svg" />
+	</p>
+</div>
+<!-- markdownlint-enable MD041 MD033 MD010 -->
 
 ## 📦 Project Structure
 
@@ -23,6 +33,22 @@ go-datastructures/
 ├── go.mod                         # Go module
 └── README.md                      # This file
 ```
+
+## 🧰 Tech Stack & Versions
+
+<!-- markdownlint-disable MD033 MD010 -->
+<p align="center">
+	<img alt="Language" src="https://img.shields.io/badge/Language-Go%20(1.23.2)-00ADD8?logo=go&logoColor=white" />
+	<img alt="Build" src="https://img.shields.io/badge/Build-Go%20Modules-informational" />
+	<img alt="Testing" src="https://img.shields.io/badge/Testing-go%20test-9cf" />
+	<img alt="StdLib" src="https://img.shields.io/badge/Frameworks-Standard%20Library%20Only-lightgrey" />
+</p>
+<!-- markdownlint-enable MD033 MD010 -->
+
+Notes:
+
+- This repository uses only the Go Standard Library (no external web frameworks).
+- Some packages use big integers via the standard library `math/big`.
 
 ## 🚀 Implemented Algorithms and Data Structures
 
@@ -132,7 +158,7 @@ go doc ./pkg/sort
 
 ### Prerequisites
 
-- Go 1.19 or higher
+- Go 1.23+ (module targets Go 1.23.2)
 
 ### Clone Repository
 
