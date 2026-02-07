@@ -22,12 +22,15 @@ go-datastructures/
 │   └── farm_problem/
 │       └── main.go                # Farm problem example (Euclidean)
 ├── pkg/
+│   ├── b-tree/
+│   │   └── b-tree.go              # B-Tree self-balancing tree
 │   ├── binaryTree/
 │   │   └── binaryTree.go          # Basic binary tree structure
 │   ├── euclidean/                 # → Euclidean Algorithm (GCD/LCM)
 │   ├── fatorial/                  # → Factorial calculation with big.Int
 │   ├── fibonacci/                 # → Fibonacci algorithms (multiple implementations)
 │   ├── graph/                     # → Basic graph structure
+│   ├── hashTable/                 # → Hash Table (hash map)
 │   ├── sort/                      # → Sorting algorithms
 │   └── stack/                     # → Stack (LIFO)
 ├── go.mod                         # Go module
@@ -54,9 +57,11 @@ Notes:
 
 | Package | Description | Status | Documentation |
 |---------|-------------|--------|---------------|
+| **[b-tree](pkg/b-tree/)** | B-Tree self-balancing search tree for databases | ✅ Complete | [📖 README](pkg/b-tree/README.md) |
 | **[euclidean](pkg/euclidean/)** | Euclidean Algorithm - GCD, LCM, farm problem | ✅ Complete | [📖 README](pkg/euclidean/README.md) |
 | **[fatorial](pkg/fatorial/)** | Factorial calculation with big.Int for large numbers | ✅ Complete | [📖 README](pkg/fatorial/README.md) |
 | **[fibonacci](pkg/fibonacci/)** | Fibonacci sequence - Multiple algorithm implementations | ✅ Complete | [📖 README](pkg/fibonacci/README.md) |
+| **[hashTable](pkg/hashTable/)** | Hash Table with separate chaining collision handling | ✅ Complete | [📖 README](pkg/hashTable/README.md) |
 | **[stack](pkg/stack/)** | Stack implementation (LIFO) with linked list | ✅ Complete | [📖 README](pkg/stack/README.md) |
 | **[sort](pkg/sort/)** | Sorting algorithms (QuickSort, MergeSort, etc.) | ✅ Complete | [📖 README](pkg/sort/README.md) |
 | **[binaryTree](pkg/binaryTree/)** | Basic binary tree structure | 🚧 In development | - |
@@ -134,22 +139,39 @@ stack.Push(42)
 value, _ := stack.Pop() // 42
 ```
 
+### B-Tree
+
+```go
+import btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
+
+bt := btree.NewBTree(3)  // minimum degree 3
+bt.Insert(10)
+bt.Insert(20)
+bt.Insert(5)
+found := bt.Search(10)  // true
+bt.Remove(10)
+```
+
 ## 📖 Documentation
 
 For detailed information about each algorithm, consult the specific documentation:
 
+- **[B-Tree](pkg/b-tree/README.md)** - Self-balancing search tree
 - **[Euclidean Algorithm](pkg/euclidean/README.md)** - GCD, LCM, farm problem
 - **[Factorial](pkg/fatorial/README.md)** - Calculations with big.Int
 - **[Fibonacci Sequence](pkg/fibonacci/README.md)** - Multiple algorithm implementations
+- **[Hash Table](pkg/hashTable/README.md)** - Hash map with collision handling
 - **[Stack](pkg/stack/README.md)** - LIFO implementation
 - **[Sorting Algorithms](pkg/sort/README.md)** - QuickSort, MergeSort, etc.
 
 ### go doc Commands
 
 ```bash
+go doc ./pkg/b-tree
 go doc ./pkg/euclidean
 go doc ./pkg/fatorial
 go doc ./pkg/fibonacci
+go doc ./pkg/hashTable
 go doc ./pkg/stack
 go doc ./pkg/sort
 ```

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
 	"github.com/JeanGrijp/go-datastructures/pkg/euclidean"
 	"github.com/JeanGrijp/go-datastructures/pkg/fatorial"
 	"github.com/JeanGrijp/go-datastructures/pkg/fibonacci"
@@ -78,8 +79,8 @@ func main() {
 
 	// Sequência de Fibonacci
 	fmt.Println("   📊 Sequência de Fibonacci:")
-	sequence := fibonacci.FibonacciSequence(100)
-	fmt.Printf("   Primeiros 100: %v\n", sequence)
+	sequence := fibonacci.FibonacciSequence(15)
+	fmt.Printf("   Primeiros 15: %v\n", sequence)
 	fmt.Println()
 
 	// Números grandes com big.Int
@@ -96,11 +97,105 @@ func main() {
 	fmt.Printf("   Índice do número 55: %d\n", fibonacci.FibonacciIndex(55))
 	fmt.Printf("   Soma dos primeiros 10: %d\n", fibonacci.FibonacciSum(10))
 	fmt.Printf("   Razão áurea (aprox): %.6f\n", fibonacci.GoldenRatio(20))
-
-	// Teste de Fibonacci Matriz
 	fmt.Println()
-	fmt.Println("   📊 Teste de Fibonacci Matriz:")
-	n = 50
-	fmt.Printf("   F(%d) Matriz: %d\n", n, fibonacci.FibonacciMatrix(n))
 
+	// Demo do pacote B-Tree
+	fmt.Println("4. B-Tree Package Demo:")
+	fmt.Println()
+
+	// Criando uma B-Tree com grau mínimo 2 (2-3-4 tree)
+	fmt.Println("   🌳 Criando B-Tree com grau mínimo t=2:")
+	bt := btree.NewBTree(2)
+
+	// Inserindo chaves
+	keysToInsert := []int{10, 20, 5, 6, 12, 30, 7, 17, 3, 8}
+	fmt.Printf("   Inserindo chaves: %v\n", keysToInsert)
+	for _, k := range keysToInsert {
+		bt.Insert(k)
+	}
+	fmt.Println("   ✅ Todas as chaves inseridas!")
+	fmt.Println()
+
+	// Buscando chaves
+	fmt.Println("   🔍 Buscando chaves:")
+	searchKeys := []int{6, 15, 30, 100}
+	for _, k := range searchKeys {
+		if bt.Search(k) {
+			fmt.Printf("   Chave %d: ✅ encontrada\n", k)
+		} else {
+			fmt.Printf("   Chave %d: ❌ não encontrada\n", k)
+		}
+	}
+	fmt.Println()
+
+	// Removendo chaves
+	fmt.Println("   🗑️  Removendo chaves:")
+	keysToRemove := []int{6, 30, 3}
+	for _, k := range keysToRemove {
+		fmt.Printf("   Removendo chave %d...\n", k)
+		bt.Remove(k)
+	}
+	fmt.Println()
+
+	// Verificando após remoção
+	fmt.Println("   🔍 Verificando após remoção:")
+	checkKeys := []int{6, 30, 3, 10, 20}
+	for _, k := range checkKeys {
+		if bt.Search(k) {
+			fmt.Printf("   Chave %d: ✅ ainda presente\n", k)
+		} else {
+			fmt.Printf("   Chave %d: ❌ removida/não existe\n", k)
+		}
+	}
+	fmt.Println()
+
+	// Exemplo com grau mínimo maior (mais eficiente para grandes volumes)
+	fmt.Println("   📊 Exemplo com grau mínimo t=50 (típico para databases):")
+	btLarge := btree.NewBTree(50)
+
+	// Inserindo 1000 chaves
+	for i := 1; i <= 1000; i++ {
+		btLarge.Insert(i)
+	}
+	fmt.Println("   ✅ 1000 chaves inseridas!")
+
+	// Verificando algumas chaves
+	testKeys := []int{1, 500, 1000, 1001}
+	for _, k := range testKeys {
+		if btLarge.Search(k) {
+			fmt.Printf("   Chave %d: ✅ encontrada\n", k)
+		} else {
+			fmt.Printf("   Chave %d: ❌ não encontrada\n", k)
+		}
+	}
+	fmt.Println()
+
+	// Demonstração de uso típico: índice de banco de dados
+	fmt.Println("   💾 Simulação de índice de banco de dados:")
+	dbIndex := btree.NewBTree(100)
+
+	// Simulando IDs de registros
+	recordIDs := []int{1001, 2045, 3089, 4023, 5067, 6011, 7055, 8099}
+	fmt.Printf("   Indexando registros: %v\n", recordIDs)
+	for _, id := range recordIDs {
+		dbIndex.Insert(id)
+	}
+
+	// Buscando um registro
+	searchID := 3089
+	if dbIndex.Search(searchID) {
+		fmt.Printf("   Registro #%d: ✅ encontrado no índice\n", searchID)
+	}
+
+	// Removendo um registro deletado
+	deleteID := 2045
+	dbIndex.Remove(deleteID)
+	fmt.Printf("   Registro #%d removido do índice\n", deleteID)
+
+	if !dbIndex.Search(deleteID) {
+		fmt.Printf("   Registro #%d: ❌ não está mais no índice\n", deleteID)
+	}
+	fmt.Println()
+
+	fmt.Println("=== Demo Completo! ===")
 }
