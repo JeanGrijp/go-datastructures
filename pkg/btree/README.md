@@ -138,7 +138,7 @@ package main
 
 import (
     "fmt"
-    btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
+    btree "github.com/JeanGrijp/go-datastructures/pkg/btree"
 )
 
 func main() {
@@ -171,7 +171,7 @@ func main() {
 package main
 
 import (
-    btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
+    btree "github.com/JeanGrijp/go-datastructures/pkg/btree"
 )
 
 func main() {
@@ -199,7 +199,7 @@ func main() {
 package main
 
 import (
-    btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
+    btree "github.com/JeanGrijp/go-datastructures/pkg/btree"
 )
 
 func main() {

@@ -1,6 +1,6 @@
-// Package fatorial provides functions to calculate factorial of integers
+// Package factorial provides functions to calculate factorials of integers
 // using arbitrary precision arithmetic to handle very large numbers.
-package fatorial
+package factorial
 
 import "math/big"
 
@@ -24,7 +24,7 @@ import "math/big"
 //
 // Example usage:
 //
-//	result := fatorial.Factorial(100)
+//	result := factorial.Factorial(100)
 //	fmt.Println("100! =", result)
 //
 // Time complexity: O(n)
@@ -35,21 +35,4 @@ func Factorial(n int) *big.Int {
 		result.Mul(result, big.NewInt(int64(i)))
 	}
 	return result
-}
-
-// Fatorial calculates the factorial of n (n!) in Portuguese.
-// This function is provided for compatibility with Portuguese-named code.
-// It internally calls Factorial(n).
-//
-// Fatorial calcula o fatorial de n (n!) em português.
-// Esta função é fornecida para compatibilidade com código em português.
-// Internamente chama Factorial(n).
-//
-// Parameters:
-//   - n: A non-negative integer for which to calculate the factorial
-//
-// Returns:
-//   - *big.Int: The factorial of n as an arbitrary precision integer
-func Fatorial(n int) *big.Int {
-	return Factorial(n)
 }

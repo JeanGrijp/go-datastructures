@@ -1,4 +1,4 @@
-package fatorial
+package factorial
 
 import (
 	"fmt"
@@ -28,16 +28,6 @@ func TestFactorial(t *testing.T) {
 	}
 }
 
-// TestFatorial tests the Portuguese version function
-func TestFatorial(t *testing.T) {
-	result1 := Factorial(10)
-	result2 := Fatorial(10)
-
-	if result1.Cmp(result2) != 0 {
-		t.Errorf("Factorial and Fatorial should return the same result")
-	}
-}
-
 // BenchmarkFactorial benchmarks the Factorial function
 func BenchmarkFactorial(b *testing.B) {
 	for i := 0; i < b.N; i++ {
@@ -59,9 +49,9 @@ func ExampleFactorial_large() {
 	// Output: 100! has 158 digits
 }
 
-// ExampleFatorial demonstrates the Portuguese version
-func ExampleFatorial() {
-	resultado := Fatorial(6)
-	fmt.Println("6! =", resultado)
+// ExampleFactorial_small demonstrates another basic usage example.
+func ExampleFactorial_small() {
+	result := Factorial(6)
+	fmt.Println("6! =", result)
 	// Output: 6! = 720
 }

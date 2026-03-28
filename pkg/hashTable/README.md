@@ -160,7 +160,7 @@ package main
 
 import (
     "fmt"
-    "yourmodule/pkg/hashtable"
+    "github.com/JeanGrijp/go-datastructures/pkg/hashtable"
 )
 
 func main() {
@@ -201,7 +201,7 @@ package main
 
 import (
     "fmt"
-    "yourmodule/pkg/hashtable"
+    "github.com/JeanGrijp/go-datastructures/pkg/hashtable"
 )
 
 func main() {
@@ -241,7 +241,7 @@ import (
     "math/rand"
     "strconv"
     "time"
-    "yourmodule/pkg/hashtable"
+    "github.com/JeanGrijp/go-datastructures/pkg/hashtable"
 )
 
 func main() {
@@ -289,7 +289,7 @@ package main
 
 import (
     "fmt"
-    "yourmodule/pkg/hashtable"
+    "github.com/JeanGrijp/go-datastructures/pkg/hashtable"
 )
 
 type Cache struct {

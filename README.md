@@ -20,27 +20,25 @@ go-datastructures/
 │   └── main.go                    # Main demo of packages
 ├── examples/
 │   └── farm_problem/
-│       └── main.go                # Farm problem example (Euclidean)
+│       └── main.go
 ├── pkg/
-│   ├── b-tree/
-│   │   └── b-tree.go              # B-Tree self-balancing tree
-│   ├── binaryTree/
-│   │   └── binaryTree.go          # Basic binary tree structure
+│   ├── btree/           # B-Tree self-balancing tree
+│   ├── binarytree/         # Basic binary tree structure
 │   ├── euclidean/                 # → Euclidean Algorithm (GCD/LCM)
-│   ├── fatorial/                  # → Factorial calculation with big.Int
+│   ├── factorial/                 # → Factorial calculation with big.Int
 │   ├── fibonacci/                 # → Fibonacci algorithms (multiple implementations)
 │   ├── graph/                     # → Basic graph structure
-│   ├── hashTable/                 # → Hash Table (hash map)
+│   ├── hashtable/                 # → Hash Table (hash map)
 │   ├── sort/                      # → Sorting algorithms
 │   └── stack/                     # → Stack (LIFO)
 ├── go.mod                         # Go module
 └── README.md                      # This file
 ```
 
-## 🧰 Tech Stack & Versions
+## Tech Stack & Versions
 
 <!-- markdownlint-disable MD033 MD010 -->
-<p align="center">
+<p align="left">
 	<img alt="Language" src="https://img.shields.io/badge/Language-Go%20(1.23.2)-00ADD8?logo=go&logoColor=white" />
 	<img alt="Build" src="https://img.shields.io/badge/Build-Go%20Modules-informational" />
 	<img alt="Testing" src="https://img.shields.io/badge/Testing-go%20test-9cf" />
@@ -57,15 +55,15 @@ Notes:
 
 | Package | Description | Status | Documentation |
 |---------|-------------|--------|---------------|
-| **[b-tree](pkg/b-tree/)** | B-Tree self-balancing search tree for databases | ✅ Complete | [📖 README](pkg/b-tree/README.md) |
+| **[b-tree](pkg/btree/)** | B-Tree self-balancing search tree for databases | ✅ Complete | [📖 README](pkg/btree/README.md) |
 | **[euclidean](pkg/euclidean/)** | Euclidean Algorithm - GCD, LCM, farm problem | ✅ Complete | [📖 README](pkg/euclidean/README.md) |
-| **[fatorial](pkg/fatorial/)** | Factorial calculation with big.Int for large numbers | ✅ Complete | [📖 README](pkg/fatorial/README.md) |
+| **[factorial](pkg/factorial/)** | Factorial calculation with big.Int for large numbers | ✅ Complete | [📖 README](pkg/factorial/README.md) |
 | **[fibonacci](pkg/fibonacci/)** | Fibonacci sequence - Multiple algorithm implementations | ✅ Complete | [📖 README](pkg/fibonacci/README.md) |
-| **[hashTable](pkg/hashTable/)** | Hash Table with separate chaining collision handling | ✅ Complete | [📖 README](pkg/hashTable/README.md) |
+| **[hashtable](pkg/hashtable/)** | Hash Table with separate chaining collision handling | ✅ Complete | [📖 README](pkg/hashtable/README.md) |
 | **[stack](pkg/stack/)** | Stack implementation (LIFO) with linked list | ✅ Complete | [📖 README](pkg/stack/README.md) |
 | **[sort](pkg/sort/)** | Sorting algorithms (QuickSort, MergeSort, etc.) | ✅ Complete | [📖 README](pkg/sort/README.md) |
-| **[binaryTree](pkg/binaryTree/)** | Basic binary tree structure | 🚧 In development | - |
-| **[graph](pkg/graph/)** | Graph structures and algorithms | 🚧 Planned | - |
+| **[binarytree](pkg/binarytree/)** | Basic binary tree structure | 🚧 In development | - |
+| **[graph](pkg/graph/)** | Directed/undirected weighted graph + Dijkstra and A* | ✅ Complete | [📖 README](pkg/graph/README.md) |
 
 ## 🎯 Quick Start
 
@@ -92,7 +90,7 @@ go test ./pkg/...
 | Package | Coverage | Status |
 |---------|----------|--------|
 | euclidean | 93.5% | ✅ |
-| fatorial | 100% | ✅ |
+| factorial | 100% | ✅ |
 | fibonacci | 52.7% | ✅ |
 | stack | 100% | ✅ |
 | sort | 96.3% | ✅ |
@@ -111,10 +109,10 @@ squareSize := euclidean.LargestSquareSize(1680, 1050) // 210
 ### Large Number Factorial
 
 ```go
-import "github.com/JeanGrijp/go-datastructures/pkg/fatorial"
+import "github.com/JeanGrijp/go-datastructures/pkg/factorial"
 
 // Calculate 3000! (9131 digits)
-result := fatorial.Factorial(3000)
+result := factorial.Factorial(3000)
 ```
 
 ### Fibonacci Sequence
@@ -142,7 +140,7 @@ value, _ := stack.Pop() // 42
 ### B-Tree
 
 ```go
-import btree "github.com/JeanGrijp/go-datastructures/pkg/b-tree"
+import btree "github.com/JeanGrijp/go-datastructures/pkg/btree"
 
 bt := btree.NewBTree(3)  // minimum degree 3
 bt.Insert(10)
@@ -152,26 +150,58 @@ found := bt.Search(10)  // true
 bt.Remove(10)
 ```
 
+### Graph (Directed/Undirected + Shortest Paths)
+
+```go
+import "github.com/JeanGrijp/go-datastructures/pkg/graph"
+
+// Directed graph
+dg := graph.NewGraph(true)
+dg.AddEdge("A", "B", 1)
+dg.AddEdge("B", "D", 2)
+
+path, cost, ok := dg.ShortestPath("A", "D") // Dijkstra
+_ = path
+_ = cost
+_ = ok
+
+// Undirected graph
+ug := graph.NewGraph(false)
+ug.AddEdge("A", "B", 4)
+ug.AddEdge("B", "C", 1)
+
+heuristic := func(current, goal *graph.Vertex) int {
+ return 0
+}
+
+astarPath, astarCost, astarOK := ug.AStar("A", "C", heuristic)
+_ = astarPath
+_ = astarCost
+_ = astarOK
+```
+
 ## 📖 Documentation
 
 For detailed information about each algorithm, consult the specific documentation:
 
-- **[B-Tree](pkg/b-tree/README.md)** - Self-balancing search tree
+- **[B-Tree](pkg/btree/README.md)** - Self-balancing search tree
 - **[Euclidean Algorithm](pkg/euclidean/README.md)** - GCD, LCM, farm problem
-- **[Factorial](pkg/fatorial/README.md)** - Calculations with big.Int
+- **[Factorial](pkg/factorial/README.md)** - Calculations with big.Int
 - **[Fibonacci Sequence](pkg/fibonacci/README.md)** - Multiple algorithm implementations
-- **[Hash Table](pkg/hashTable/README.md)** - Hash map with collision handling
+- **[Hash Table](pkg/hashtable/README.md)** - Hash map with collision handling
+- **[Graph](pkg/graph/README.md)** - Directed/undirected weighted graph, Dijkstra, A*
 - **[Stack](pkg/stack/README.md)** - LIFO implementation
 - **[Sorting Algorithms](pkg/sort/README.md)** - QuickSort, MergeSort, etc.
 
 ### go doc Commands
 
 ```bash
-go doc ./pkg/b-tree
+go doc ./pkg/btree
 go doc ./pkg/euclidean
-go doc ./pkg/fatorial
+go doc ./pkg/factorial
 go doc ./pkg/fibonacci
-go doc ./pkg/hashTable
+go doc ./pkg/graph
+go doc ./pkg/hashtable
 go doc ./pkg/stack
 go doc ./pkg/sort
 ```
@@ -208,4 +238,3 @@ This project is licensed under the MIT License.
 - [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/books/introduction-algorithms-third-edition)
 - [The Art of Computer Programming (Knuth)](https://www-cs-faculty.stanford.edu/~knuth/taocp.html)
 - [Official Go Documentation](https://golang.org/doc/)
-
