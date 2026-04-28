@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 
-	btree "github.com/JeanGrijp/go-datastructures/pkg/btree"
+	"github.com/JeanGrijp/go-datastructures/pkg/btree"
 	"github.com/JeanGrijp/go-datastructures/pkg/euclidean"
 	"github.com/JeanGrijp/go-datastructures/pkg/factorial"
 	"github.com/JeanGrijp/go-datastructures/pkg/fibonacci"
+	"github.com/JeanGrijp/go-datastructures/pkg/graph"
 )
 
 func main() {
@@ -197,5 +198,19 @@ func main() {
 	}
 	fmt.Println()
 
+	fmt.Println("=== Graph Package Demo ===")
+
+	// -- graph
+	romeniaGraph := graph.BuildRomaniaGraph()
+	pathOne, costOne, _ := romeniaGraph.ShortestPath("Arad", "Bucharest")
+	fmt.Printf("Shortest path from Arad to Bucharest: \n%v\n with cost %d\n", pathOne, costOne)
+
+	pathTwo, costTwo, _ := romeniaGraph.AStar("Arad", "Bucharest", graph.RomaniaBucharestHeuristic)
+	fmt.Printf("A* path from Arad to Bucharest: \n%v\n with cost %d\n", pathTwo, costTwo)
+
+	pathThree, costThree, _ := romeniaGraph.AStar("Arad", "Craiova", graph.RomaniaBucharestHeuristic)
+	fmt.Printf("A* path from Arad to Craiova: \n%v\n with cost %d\n", pathThree, costThree)
+
 	fmt.Println("=== Demo Complete! ===")
+
 }
