@@ -51,3 +51,75 @@ func absInt(v int) int {
 	}
 	return v
 }
+
+func RomaniaBucharestHeuristic(current, goal *Vertex) int {
+	if goal == nil || goal.ID() != "Bucharest" {
+		return 0
+	}
+
+	straightLineToBucharest := map[string]int{
+		"Arad":           366,
+		"Bucharest":      0,
+		"Craiova":        160,
+		"Drobeta":        242,
+		"Eforie":         161,
+		"Fagaras":        178,
+		"Giurgiu":        77,
+		"Hirsova":        151,
+		"Iasi":           226,
+		"Lugoj":          244,
+		"Mehadia":        241,
+		"Neamt":          234,
+		"Oradea":         380,
+		"Pitesti":        98,
+		"Rimnicu Vilcea": 193,
+		"Sibiu":          253,
+		"Timisoara":      329,
+		"Urziceni":       80,
+		"Vaslui":         199,
+		"Zerind":         374,
+	}
+
+	distance, ok := straightLineToBucharest[current.ID()]
+	if !ok {
+		return 0
+	}
+
+	return distance
+}
+
+func RomaniaIasiHeuristic(current, goal *Vertex) int {
+	if goal == nil || goal.ID() != "Iasi" {
+		return 0
+	}
+
+	straightLineToIasi := map[string]int{
+		"Arad":           418,
+		"Bucharest":      226,
+		"Craiova":        193,
+		"Drobeta":        242,
+		"Eforie":         161,
+		"Fagaras":        291,
+		"Giurgiu":        77,
+		"Hirsova":        151,
+		"Iasi":           0,
+		"Lugoj":          244,
+		"Mehadia":        241,
+		"Neamt":          87,
+		"Oradea":         380,
+		"Pitesti":        98,
+		"Rimnicu Vilcea": 193,
+		"Sibiu":          253,
+		"Timisoara":      329,
+		"Urziceni":       80,
+		"Vaslui":         199,
+		"Zerind":         374,
+	}
+
+	distance, ok := straightLineToIasi[current.ID()]
+	if !ok {
+		return 0
+	}
+
+	return distance
+}

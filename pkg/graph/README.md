@@ -288,3 +288,13 @@ Run all repository tests:
 ```bash
 go test ./...
 ```
+
+# Romania graph problem
+
+The Romania graph is a classic test case for pathfinding algorithms. It represents cities as vertices and roads as weighted edges, with weights corresponding to distances.
+
+![alt text](image.png)
+
+## Problem Description
+
+Given a graph of Romanian cities and roads, find the shortest path from Arad to Bucharest using Dijkstra's algorithm and A* search.

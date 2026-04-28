@@ -2,84 +2,6 @@ package graph
 
 import "testing"
 
-type romaniaRoad struct {
-	from   string
-	to     string
-	weight int
-}
-
-func buildRomaniaGraph() *Graph {
-	g := NewGraph(false)
-
-	roads := []romaniaRoad{
-		{from: "Arad", to: "Zerind", weight: 75},
-		{from: "Arad", to: "Sibiu", weight: 140},
-		{from: "Arad", to: "Timisoara", weight: 118},
-		{from: "Zerind", to: "Oradea", weight: 71},
-		{from: "Oradea", to: "Sibiu", weight: 151},
-		{from: "Sibiu", to: "Fagaras", weight: 99},
-		{from: "Sibiu", to: "Rimnicu Vilcea", weight: 80},
-		{from: "Fagaras", to: "Bucharest", weight: 211},
-		{from: "Rimnicu Vilcea", to: "Pitesti", weight: 97},
-		{from: "Rimnicu Vilcea", to: "Craiova", weight: 146},
-		{from: "Pitesti", to: "Bucharest", weight: 101},
-		{from: "Pitesti", to: "Craiova", weight: 138},
-		{from: "Timisoara", to: "Lugoj", weight: 111},
-		{from: "Lugoj", to: "Mehadia", weight: 70},
-		{from: "Mehadia", to: "Drobeta", weight: 75},
-		{from: "Drobeta", to: "Craiova", weight: 120},
-		{from: "Bucharest", to: "Giurgiu", weight: 90},
-		{from: "Bucharest", to: "Urziceni", weight: 85},
-		{from: "Urziceni", to: "Hirsova", weight: 98},
-		{from: "Hirsova", to: "Eforie", weight: 86},
-		{from: "Urziceni", to: "Vaslui", weight: 142},
-		{from: "Vaslui", to: "Iasi", weight: 92},
-		{from: "Iasi", to: "Neamt", weight: 87},
-	}
-
-	for _, road := range roads {
-		g.AddEdge(road.from, road.to, road.weight)
-	}
-
-	return g
-}
-
-func romaniaBucharestHeuristic(current, goal *Vertex) int {
-	if goal == nil || goal.ID() != "Bucharest" {
-		return 0
-	}
-
-	straightLineToBucharest := map[string]int{
-		"Arad":           366,
-		"Bucharest":      0,
-		"Craiova":        160,
-		"Drobeta":        242,
-		"Eforie":         161,
-		"Fagaras":        178,
-		"Giurgiu":        77,
-		"Hirsova":        151,
-		"Iasi":           226,
-		"Lugoj":          244,
-		"Mehadia":        241,
-		"Neamt":          234,
-		"Oradea":         380,
-		"Pitesti":        98,
-		"Rimnicu Vilcea": 193,
-		"Sibiu":          253,
-		"Timisoara":      329,
-		"Urziceni":       80,
-		"Vaslui":         199,
-		"Zerind":         374,
-	}
-
-	distance, ok := straightLineToBucharest[current.ID()]
-	if !ok {
-		return 0
-	}
-
-	return distance
-}
-
 func equalStringSlices(a, b []string) bool {
 	if len(a) != len(b) {
 		return false
@@ -93,7 +15,7 @@ func equalStringSlices(a, b []string) bool {
 }
 
 func TestRomaniaGraphRepresentation_TableDriven(t *testing.T) {
-	g := buildRomaniaGraph()
+	g := BuildRomaniaGraph()
 
 	if g.IsDirected() {
 		t.Fatal("expected Romania graph to be undirected")
@@ -135,7 +57,7 @@ func TestRomaniaGraphRepresentation_TableDriven(t *testing.T) {
 }
 
 func TestRomaniaShortestPath_TableDriven(t *testing.T) {
-	g := buildRomaniaGraph()
+	g := BuildRomaniaGraph()
 
 	cases := []struct {
 		name         string
@@ -191,7 +113,7 @@ func TestRomaniaShortestPath_TableDriven(t *testing.T) {
 }
 
 func TestRomaniaAStar_TableDriven(t *testing.T) {
-	g := buildRomaniaGraph()
+	g := BuildRomaniaGraph()
 
 	cases := []struct {
 		name         string
@@ -206,7 +128,7 @@ func TestRomaniaAStar_TableDriven(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			path, cost, ok := g.AStar(tc.start, tc.goal, romaniaBucharestHeuristic)
+			path, cost, ok := g.AStar(tc.start, tc.goal, RomaniaBucharestHeuristic)
 			if !ok {
 				t.Fatalf("expected AStar to find a route from %s to %s", tc.start, tc.goal)
 			}

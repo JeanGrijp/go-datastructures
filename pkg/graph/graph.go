@@ -249,3 +249,45 @@ func makeUndirectedEdgeKey(a, b string) string {
 	}
 	return b + "|" + a
 }
+
+type RomaniaRoad struct {
+	from   string
+	to     string
+	weight int
+}
+
+func BuildRomaniaGraph() *Graph {
+	g := NewGraph(false)
+
+	roads := []RomaniaRoad{
+		{from: "Arad", to: "Zerind", weight: 75},
+		{from: "Arad", to: "Sibiu", weight: 140},
+		{from: "Arad", to: "Timisoara", weight: 118},
+		{from: "Zerind", to: "Oradea", weight: 71},
+		{from: "Oradea", to: "Sibiu", weight: 151},
+		{from: "Sibiu", to: "Fagaras", weight: 99},
+		{from: "Sibiu", to: "Rimnicu Vilcea", weight: 80},
+		{from: "Fagaras", to: "Bucharest", weight: 211},
+		{from: "Rimnicu Vilcea", to: "Pitesti", weight: 97},
+		{from: "Rimnicu Vilcea", to: "Craiova", weight: 146},
+		{from: "Pitesti", to: "Bucharest", weight: 101},
+		{from: "Pitesti", to: "Craiova", weight: 138},
+		{from: "Timisoara", to: "Lugoj", weight: 111},
+		{from: "Lugoj", to: "Mehadia", weight: 70},
+		{from: "Mehadia", to: "Drobeta", weight: 75},
+		{from: "Drobeta", to: "Craiova", weight: 120},
+		{from: "Bucharest", to: "Giurgiu", weight: 90},
+		{from: "Bucharest", to: "Urziceni", weight: 85},
+		{from: "Urziceni", to: "Hirsova", weight: 98},
+		{from: "Hirsova", to: "Eforie", weight: 86},
+		{from: "Urziceni", to: "Vaslui", weight: 142},
+		{from: "Vaslui", to: "Iasi", weight: 92},
+		{from: "Iasi", to: "Neamt", weight: 87},
+	}
+
+	for _, road := range roads {
+		g.AddEdge(road.from, road.to, road.weight)
+	}
+
+	return g
+}
